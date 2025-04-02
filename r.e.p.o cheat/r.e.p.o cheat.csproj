@@ -371,6 +371,7 @@
     <Compile Include="Cheats\Items.cs" />
     <Compile Include="Cheats\ItemSpawner.cs" />
     <Compile Include="Cheats\ItemSync.cs" />
+    <Compile Include="Cheats\NoclipController.cs" />
     <Compile Include="Cheats\PlayerCheatSync.cs" />
     <Compile Include="Cheats\DebugCheats.cs" />
     <Compile Include="Cheats\GameHelper.cs" />
