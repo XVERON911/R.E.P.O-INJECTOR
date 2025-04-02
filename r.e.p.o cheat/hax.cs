@@ -190,7 +190,7 @@ namespace r.e.p.o_cheat
         private bool initialized = false;
         private static Dictionary<Color, Texture2D> solidTextures = new Dictionary<Color, Texture2D>();
 
-        private enum MenuCategory { Player, ESP, Combat, Misc, Enemies, Items }
+        private enum MenuCategory { Player, ESP, Combat, Misc, Enemies, Items, VERON }
         private MenuCategory currentCategory = MenuCategory.Player;
 
         public static float staminaRechargeDelay = 1f;
@@ -909,8 +909,7 @@ namespace r.e.p.o_cheat
 
             if (DebugCheats.drawEspBool || DebugCheats.drawItemEspBool || DebugCheats.drawExtractionPointEspBool || DebugCheats.drawPlayerEspBool || DebugCheats.draw3DPlayerEspBool || DebugCheats.draw3DItemEspBool) DebugCheats.DrawESP();
 
-            GUI.Label(new Rect(10, 10, 200, 30), "D.A.R.K CHEAT | DEL - MENU");
-            GUI.Label(new Rect(198, 10, 200, 30), "MADE BY Github/D4rkks");
+            GUI.Label(new Rect(10, 10, 200, 30), "CHALLENGER | DEL - MENU");
 
             if (showMenu)
             {
@@ -921,11 +920,11 @@ namespace r.e.p.o_cheat
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
 
-                Rect menuRect = new Rect(menuX, menuY, 600, 730);
-                Rect titleRect = new Rect(menuX, menuY, 600, titleBarHeight);
+                Rect menuRect = new Rect(menuX, menuY, 700, 730);
+                Rect titleRect = new Rect(menuX, menuY, 700, titleBarHeight);
 
                 GUI.Box(menuRect, "", menuStyle);
-                UIHelper.Begin("D.A.R.K. Menu 1.1.1.1", menuX, menuY, 600, 800, 30, 30, 10);
+                UIHelper.Begin("!CHALLENGER!", menuX, menuY, 700, 800, 30, 30, 10);
 
                 if (Event.current.type == EventType.MouseDown && titleRect.Contains(Event.current.mousePosition))
                 {
@@ -974,9 +973,11 @@ namespace r.e.p.o_cheat
                     currentCategory = MenuCategory.Enemies;
                 if (GUI.Button(new Rect(startX + 5 * (tabWidth + spacing), menuY + 30, tabWidth, tabHeight), "Items", currentCategory == MenuCategory.Items ? selectedTabStyle : tabStyle))
                     currentCategory = MenuCategory.Items;
+                if (GUI.Button(new Rect(startX + 6 * (tabWidth + spacing), menuY + 30, tabWidth, tabHeight), "VERON", currentCategory == MenuCategory.VERON ? selectedTabStyle : tabStyle))
+                    currentCategory = MenuCategory.VERON;
 
                 GUIStyle instructionStyle = new GUIStyle(GUI.skin.label) { fontSize = 12, normal = { textColor = Color.white } };
-                GUI.Label(new Rect(menuX + 10, menuY + 75, 580, 20), "Press F5 to reload! Press DEL to close! Press F10 to unload!", instructionStyle);
+                GUI.Label(new Rect(menuX + 10, menuY + 75, 580, 20), "F5 to reload! Press DEL to close! Press F10 to Eject!", instructionStyle);
                 switch (currentCategory)
                 {
                     case MenuCategory.Player:
@@ -1280,6 +1281,9 @@ namespace r.e.p.o_cheat
                                 Hax2.Log1("Nenhum item válido selecionado para alterar valor!");
                             }
                         }
+                        break;
+                    case MenuCategory.VERON:
+                        UIHelper.Label("=== CHALLENGER ===");
                         break;
                 }
             }
